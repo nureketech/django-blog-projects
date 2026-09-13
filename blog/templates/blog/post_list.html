@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for post in posts %}
+<h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+<p>{{ post.created|date:"d.m.Y" }}</p>
+{% empty %}
+<p>Әзірге жазба жоқ.</p>
+{% endfor %}
+{% endblock %}

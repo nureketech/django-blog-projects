@@ -4,13 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <title>Blog Apps</title>
 </head>
-{% block content %}
-{% endblock %}
 
-<body>
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+            <div class="container">
 
+                <!-- 1. Логотип -->
+                <a class="navbar-brand fw-bold" href="">Менің блогым</a>
+
+                <!-- 2. Телефондағы «бургер» батырмасы -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                    aria-controls="mainNav" aria-expanded="false" aria-label="Мәзірді ашу">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- 3. Жасырылатын бөлік -->
+                <div class="collapse navbar-collapse" id="mainNav">
+
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <main class="container flex-grow-1">
+        <h1>Блог</h1>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="border-top py-4 mt-5">
+        <div class="container">...</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
