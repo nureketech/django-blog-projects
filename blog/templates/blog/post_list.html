@@ -1,10 +1,42 @@
 {% extends 'base.html' %}
 
+{% block title %}Блог — Басты бет{% endblock %}
+
 {% block content %}
-{% for post in posts %}
-<h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
-<p>{{ post.created|date:"d.m.Y" }}</p>
-{% empty %}
-<p>Әзірге жазба жоқ.</p>
-{% endfor %}
+<div class="hero">
+    <h1 class="fw-bold mb-2">Блог</h1>
+    <p class="mb-0 opacity-75">Соңғы жазбалар мен ойлар</p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    {% for post in posts %}
+    <div class="col">
+        <div class="card post-card h-100">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-semibold">
+                    <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
+                </h5>
+                <p class="card-text text-muted flex-grow-1">
+                    {{ post.body|truncatewords:20 }}
+                </p>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <small class="text-muted">
+                        <i class="bi bi-calendar3 me-1"></i>{{ post.created|date:"d.m.Y" }}
+                    </small>
+                    <a href="{% url 'post_detail' post.pk %}" class="btn btn-sm btn-outline-primary">
+                        Оқу <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <div class="alert alert-light border text-center py-5">
+            <i class="bi bi-journal-x fs-1 text-muted d-block mb-2"></i>
+            Әзірге жазба жоқ.
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}
